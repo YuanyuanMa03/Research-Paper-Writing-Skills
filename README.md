@@ -1,85 +1,97 @@
-# Skills: Research Paper Writing
+# Research Paper Writing — Claude Code Plugin
 
-[中文介绍](./README_zh.md).
+[中文介绍](./README_zh.md)
 
-> Important Attribution
-> Most writing knowledge and methodology in this repository comes from Prof. Peng Sida (彭思达)'s open study notes:
-> https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e
-> Prof. Peng's original repository:
-> https://github.com/pengsida/learning_research
+## Attribution
+
+> **Most writing knowledge and methodology in this repository comes from Prof. Peng Sida (彭思达)'s open study notes:**
+> - Notion: https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e
+> - GitHub: https://github.com/pengsida/learning_research
+>
 > I sincerely thank Prof. Peng for openly sharing these valuable experiences.
-> My contribution is organization, structured adaptation, and packaging as reusable Skills.
+> My contribution is organization, structured adaptation, and packaging as a Claude Code plugin.
 
-## Repository Overview
+## What This Plugin Does
 
-This repository currently provides one skill package:
+A Claude Code plugin that improves academic paper writing quality for ML/CV/NLP-style papers. It provides structured guidance for:
 
-- `research-paper-writing/`
-  - `SKILL.md`: core workflow and usage rules
-  - `references/`: section-specific writing guides and templates
-  - `agents/openai.yaml`: agent metadata
-
-Typical use cases:
-
-- Drafting or rewriting Abstract / Introduction / Method / Experiments / Conclusion
+- Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
 - Improving paragraph flow and section logic
 - Checking claim-evidence alignment
+- Polishing figures and tables
 - Running pre-submission self-review from a reviewer mindset
 
 ## Installation
 
-Assume you are in the repository root.
-
-### 1) Codex
-
-Copy the skill into `$CODEX_HOME/skills/`:
+### Option 1: Install from local clone
 
 ```bash
-mkdir -p "$CODEX_HOME/skills"
-cp -R research-paper-writing "$CODEX_HOME/skills/"
+git clone https://github.com/Master-cai/Research-Paper-Writing-Skills.git
+cd Research-Paper-Writing-Skills
 ```
 
-Usage example:
-
-```text
-Use $research-paper-writing to improve my paper's Introduction.
-```
-
-### 2) CC (Claude Code)
-
-Use either a global or project-level installation.
-
-Global:
+Then use with Claude Code:
 
 ```bash
+# Test with --plugin-dir
+claude --plugin-dir .
+
+# Or copy to your project
+cp -R . /path/to/your-project/.claude-plugin/research-paper-writing
+```
+
+### Option 2: Install as Claude Code skill (legacy)
+
+If you prefer the simpler skill-based installation:
+
+```bash
+# Global installation
 mkdir -p "$HOME/.claude/skills"
-cp -R research-paper-writing "$HOME/.claude/skills/"
-```
+cp -R skills/research-paper-writing "$HOME/.claude/skills/"
 
-Project-level:
-
-```bash
+# Or project-level installation
 mkdir -p .claude/skills
-cp -R research-paper-writing .claude/skills/
+cp -R skills/research-paper-writing .claude/skills/
 ```
 
-In prompts, explicitly request this skill, for example: `Please use the research-paper-writing skill`.
+## Plugin Structure
 
-### 3) Gemini
-
-Copy this skill into your Gemini skills directory:
-
-```bash
-mkdir -p "$HOME/.gemini/skills"
-cp -R research-paper-writing "$HOME/.gemini/skills/"
+```
+research-paper-writing/
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest
+├── skills/
+│   └── research-paper-writing/
+│       ├── SKILL.md         # Core workflow and rules
+│       └── references/      # Section-specific guides
+│           ├── abstract.md
+│           ├── introduction.md
+│           ├── method.md
+│           ├── experiments.md
+│           ├── related-work.md
+│           ├── conclusion.md
+│           ├── paper-review.md
+│           ├── does-my-writing-flow-source.md
+│           └── examples/    # Annotated templates from real papers
+├── README.md
+├── README_zh.md
+└── LICENSE
 ```
 
-Then ask concrete tasks in Gemini (for example, rewriting an Abstract with claim-evidence checks).
+## Usage
+
+Once installed, the skill activates automatically when you ask about paper writing tasks. Examples:
+
+- "Help me write the Introduction section"
+- "Improve the flow of my Abstract"
+- "Check claim-evidence alignment in my paper"
+- "Review my paper before submission"
+- "Rewrite the Method section with better motivation"
 
 ## Credits
 
-Again, this repository is primarily based on Prof. Peng Sida (彭思达)'s open notes, while my work focuses on curation and Skills adaptation.
-Prof. Peng's original repository: https://github.com/pengsida/learning_research
+- **Writing methodology:** Prof. Peng Sida (彭思达) — [GitHub](https://github.com/pengsida/learning_research)
+- **Plugin packaging:** Master-cai — [GitHub](https://github.com/Master-cai)
 
 ## License
 

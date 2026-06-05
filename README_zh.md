@@ -1,83 +1,95 @@
-# Skills: Research Paper Writing
+# Research Paper Writing — Claude Code 插件
 
-> 重要归属说明
-> 本仓库中的大部分写作经验与方法论来自彭思达老师公开的学习笔记：
-> https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e
-> 彭老师原始仓库：
-> https://github.com/pengsida/learning_research
+[English](./README.md)
+
+## 归属说明
+
+> **本仓库中的大部分写作经验与方法论来自彭思达老师公开的学习笔记：**
+> - Notion: https://pengsida.notion.site/c1a22465a0fa4b15a12985223916048e
+> - GitHub: https://github.com/pengsida/learning_research
+>
 > 衷心感谢彭思达老师把这些宝贵经验公开分享出来。
-> 我主要做了资料整理、结构化适配，以及 Skills 封装。
+> 我主要做了资料整理、结构化适配，以及 Claude Code 插件封装。
 
-## 仓库介绍
+## 插件功能
 
-当前仓库提供 1 个技能包：
+这是一个 Claude Code 插件，用于提升 ML/CV/NLP 类学术论文的写作质量。提供以下结构化指导：
 
-- `research-paper-writing/`
-  - `SKILL.md`：核心流程与使用规则
-  - `references/`：按章节拆分的写作指南与模板
-  - `agents/openai.yaml`：Agent 元信息
-
-常见使用场景：
-
-- 撰写或重写 Abstract / Introduction / Method / Experiments / Conclusion
+- 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
 - 改善段落衔接与章节逻辑
 - 做 claim-evidence 对齐检查
+- 优化图表质量
 - 提交前从 reviewer 视角进行自审
 
 ## 安装方式
 
-以下命令默认在仓库根目录执行。
-
-### 1) Codex
-
-将技能复制到 `$CODEX_HOME/skills/`：
+### 方式一：本地克隆安装
 
 ```bash
-mkdir -p "$CODEX_HOME/skills"
-cp -R research-paper-writing "$CODEX_HOME/skills/"
+git clone https://github.com/Master-cai/Research-Paper-Writing-Skills.git
+cd Research-Paper-Writing-Skills
 ```
 
-使用示例：
-
-```text
-Use $research-paper-writing to improve my paper's Introduction.
-```
-
-### 2) CC（Claude Code）
-
-可选择全局安装或项目级安装。
-
-全局安装：
+然后配合 Claude Code 使用：
 
 ```bash
+# 使用 --plugin-dir 测试
+claude --plugin-dir .
+
+# 或复制到你的项目中
+cp -R . /path/to/your-project/.claude-plugin/research-paper-writing
+```
+
+### 方式二：作为 Claude Code skill 安装（传统方式）
+
+```bash
+# 全局安装
 mkdir -p "$HOME/.claude/skills"
-cp -R research-paper-writing "$HOME/.claude/skills/"
-```
+cp -R skills/research-paper-writing "$HOME/.claude/skills/"
 
-项目级安装：
-
-```bash
+# 或项目级安装
 mkdir -p .claude/skills
-cp -R research-paper-writing .claude/skills/
+cp -R skills/research-paper-writing .claude/skills/
 ```
 
-使用时建议在提示词中显式指定，例如：`Please use the research-paper-writing skill`。
+## 插件结构
 
-### 3) Gemini
-
-可将该技能复制到 Gemini 的技能目录：
-
-```bash
-mkdir -p "$HOME/.gemini/skills"
-cp -R research-paper-writing "$HOME/.gemini/skills/"
+```
+research-paper-writing/
+├── .claude-plugin/
+│   └── plugin.json          # 插件清单
+├── skills/
+│   └── research-paper-writing/
+│       ├── SKILL.md         # 核心流程与规则
+│       └── references/      # 按章节拆分的写作指南
+│           ├── abstract.md
+│           ├── introduction.md
+│           ├── method.md
+│           ├── experiments.md
+│           ├── related-work.md
+│           ├── conclusion.md
+│           ├── paper-review.md
+│           ├── does-my-writing-flow-source.md
+│           └── examples/    # 来自真实论文的标注模板
+├── README.md
+├── README_zh.md
+└── LICENSE
 ```
 
-随后在 Gemini 中直接给出具体任务（例如：重写 Abstract 并做 claim-evidence 检查）。
+## 使用方式
+
+安装后，当你询问论文写作相关任务时，插件会自动激活。例如：
+
+- "帮我写 Introduction 部分"
+- "改善我的 Abstract 的流畅度"
+- "检查论文中的 claim-evidence 对齐"
+- "提交前帮我 review 一下论文"
+- "重写 Method 部分，加强 motivation"
 
 ## 致谢
 
-再次说明：仓库核心知识来源于彭思达老师公开笔记；我主要负责整理与 Skills 化适配。
-彭老师原始仓库：https://github.com/pengsida/learning_research
+- **写作方法论：** 彭思达老师 — [GitHub](https://github.com/pengsida/learning_research)
+- **插件封装：** Master-cai — [GitHub](https://github.com/Master-cai)
 
 ## 许可证
 

@@ -1,0 +1,21 @@
+{
+  "name": "research-paper-writing",
+  "version": "1.0.0",
+  "description": "Academic paper writing skill for ML/CV/NLP-style papers. Provides structured guidance for drafting and revising Abstract, Introduction, Related Work, Method, Experiments, and Conclusion sections.",
+  "author": {
+    "name": "Master-cai",
+    "url": "https://github.com/Master-cai"
+  },
+  "homepage": "https://github.com/Master-cai/Research-Paper-Writing-Skills",
+  "repository": "https://github.com/Master-cai/Research-Paper-Writing-Skills",
+  "license": "MIT",
+  "keywords": [
+    "academic-writing",
+    "research-paper",
+    "paper-writing",
+    "ml",
+    "cv",
+    "nlp",
+    "latex"
+  ]
+}

@@ -1,6 +1,14 @@
 ---
 name: research-paper-writing
-description: Improve academic paper writing quality for ML/CV/NLP-style papers with clear section structure, paragraph flow, and reviewer-facing presentation. Use when drafting or revising Abstract, Introduction, Related Work, Method, Experiments, or Conclusion; polishing figures/tables; checking claim-support alignment; or performing self-review before submission.
+description: >
+  This skill should be used when the user asks to "write a research paper",
+  "improve my paper", "draft an abstract", "write introduction",
+  "rewrite method section", "improve experiments", "write related work",
+  "draft conclusion", "check claim-evidence alignment",
+  "review my paper", "improve paragraph flow", "polish figures and tables",
+  "self-review before submission", or any task related to academic paper
+  writing for ML/CV/NLP conferences.
+version: 1.0.0
 ---
 # Research Paper Writing
 
@@ -61,7 +69,7 @@ Load only the needed section file:
 - Method: `references/method.md`
 - Experiments: `references/experiments.md`
 - Conclusion: `references/conclusion.md`
-- Paper review (Paper Rview): `references/paper-review.md`
+- Paper review: `references/paper-review.md`
 - Paragraph clarity source: `references/does-my-writing-flow-source.md`
 - Example bank index: `references/examples/index.md`
 
