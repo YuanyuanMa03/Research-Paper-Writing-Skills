@@ -1,0 +1,21 @@
+{
+  "name": "paper-writing-skills-marketplace",
+  "description": "Claude Code plugin marketplace for paper writing skills",
+  "owner": {
+    "name": "YuanyuanMa03"
+  },
+  "plugins": [
+    {
+      "name": "research-paper-writing",
+      "source": "./plugins/research-paper-writing",
+      "description": "Academic paper writing guidance for ML/CV/NLP papers",
+      "version": "1.0.0",
+      "author": {
+        "name": "Master-cai"
+      },
+      "license": "MIT",
+      "keywords": ["academic", "paper", "research", "ml"],
+      "category": "writing"
+    }
+  ]
+}

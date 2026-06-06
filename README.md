@@ -1,4 +1,4 @@
-# Research Paper Writing — Claude Code Plugin
+# Paper Writing Skills Marketplace — Claude Code Plugin Marketplace
 
 [中文介绍](./README_zh.md)
 
@@ -9,70 +9,56 @@
 > - GitHub: https://github.com/pengsida/learning_research
 >
 > I sincerely thank Prof. Peng for openly sharing these valuable experiences.
-> My contribution is organization, structured adaptation, and packaging as a Claude Code plugin.
+> My contribution is organization, structured adaptation, and packaging as a Claude Code plugin marketplace.
 
-## What This Plugin Does
+## What This Marketplace Provides
 
-A Claude Code plugin that improves academic paper writing quality for ML/CV/NLP-style papers. It provides structured guidance for:
+A Claude Code plugin marketplace for paper writing skills. Currently includes:
 
-- Drafting or rewriting Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- Improving paragraph flow and section logic
-- Checking claim-evidence alignment
-- Polishing figures and tables
-- Running pre-submission self-review from a reviewer mindset
+- **research-paper-writing** — Academic paper writing guidance for ML/CV/NLP-style papers
 
 ## Installation
 
-### Option 1: Install from local clone
+### Add the marketplace
 
 ```bash
-git clone https://github.com/Master-cai/Research-Paper-Writing-Skills.git
-cd Research-Paper-Writing-Skills
+/plugin marketplace add YuanyuanMa03/paper-writing-skills-marketplace
 ```
 
-Then use with Claude Code:
+### Install plugins
 
 ```bash
-# Test with --plugin-dir
-claude --plugin-dir .
-
-# Or copy to your project
-cp -R . /path/to/your-project/.claude-plugin/research-paper-writing
+/plugin install research-paper-writing@paper-writing-skills-marketplace
 ```
 
-### Option 2: Install as Claude Code skill (legacy)
-
-If you prefer the simpler skill-based installation:
+### Update
 
 ```bash
-# Global installation
-mkdir -p "$HOME/.claude/skills"
-cp -R skills/research-paper-writing "$HOME/.claude/skills/"
-
-# Or project-level installation
-mkdir -p .claude/skills
-cp -R skills/research-paper-writing .claude/skills/
+/plugin marketplace update paper-writing-skills-marketplace
 ```
 
-## Plugin Structure
+## Marketplace Structure
 
 ```
-research-paper-writing/
+paper-writing-skills-marketplace/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest
-├── skills/
-│   └── research-paper-writing/
-│       ├── SKILL.md         # Core workflow and rules
-│       └── references/      # Section-specific guides
-│           ├── abstract.md
-│           ├── introduction.md
-│           ├── method.md
-│           ├── experiments.md
-│           ├── related-work.md
-│           ├── conclusion.md
-│           ├── paper-review.md
-│           ├── does-my-writing-flow-source.md
-│           └── examples/    # Annotated templates from real papers
+│   └── marketplace.json              # Marketplace registry
+├── plugins/
+│   └── research-paper-writing/       # Plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json           # Plugin manifest
+│       └── skills/
+│           └── research-paper-writing/
+│               ├── SKILL.md          # Core workflow and rules
+│               └── references/       # Section-specific guides
+│                   ├── abstract.md
+│                   ├── introduction.md
+│                   ├── method.md
+│                   ├── experiments.md
+│                   ├── related-work.md
+│                   ├── conclusion.md
+│                   ├── paper-review.md
+│                   └── examples/     # Annotated templates
 ├── README.md
 ├── README_zh.md
 └── LICENSE
@@ -80,13 +66,22 @@ research-paper-writing/
 
 ## Usage
 
-Once installed, the skill activates automatically when you ask about paper writing tasks. Examples:
+Once installed, the skill activates automatically when you ask about paper writing tasks:
 
 - "Help me write the Introduction section"
 - "Improve the flow of my Abstract"
 - "Check claim-evidence alignment in my paper"
 - "Review my paper before submission"
 - "Rewrite the Method section with better motivation"
+
+## Adding Your Own Plugins
+
+To contribute a plugin to this marketplace:
+
+1. Create your plugin in `plugins/your-plugin-name/`
+2. Add a `.claude-plugin/plugin.json` manifest
+3. Add an entry to `.claude-plugin/marketplace.json`
+4. Submit a pull request
 
 ## Credits
 

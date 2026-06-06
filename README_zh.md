@@ -1,4 +1,4 @@
-# Research Paper Writing — Claude Code 插件
+# Paper Writing Skills Marketplace — Claude Code 插件市场
 
 [English](./README.md)
 
@@ -9,68 +9,56 @@
 > - GitHub: https://github.com/pengsida/learning_research
 >
 > 衷心感谢彭思达老师把这些宝贵经验公开分享出来。
-> 我主要做了资料整理、结构化适配，以及 Claude Code 插件封装。
+> 我主要做了资料整理、结构化适配，以及 Claude Code 插件市场封装。
 
-## 插件功能
+## 市场功能
 
-这是一个 Claude Code 插件，用于提升 ML/CV/NLP 类学术论文的写作质量。提供以下结构化指导：
+这是一个 Claude Code 插件市场，提供论文写作相关技能。目前包含：
 
-- 撰写或重写 Abstract / Introduction / Related Work / Method / Experiments / Conclusion
-- 改善段落衔接与章节逻辑
-- 做 claim-evidence 对齐检查
-- 优化图表质量
-- 提交前从 reviewer 视角进行自审
+- **research-paper-writing** — ML/CV/NLP 类学术论文写作指导
 
 ## 安装方式
 
-### 方式一：本地克隆安装
+### 添加市场
 
 ```bash
-git clone https://github.com/Master-cai/Research-Paper-Writing-Skills.git
-cd Research-Paper-Writing-Skills
+/plugin marketplace add YuanyuanMa03/paper-writing-skills-marketplace
 ```
 
-然后配合 Claude Code 使用：
+### 安装插件
 
 ```bash
-# 使用 --plugin-dir 测试
-claude --plugin-dir .
-
-# 或复制到你的项目中
-cp -R . /path/to/your-project/.claude-plugin/research-paper-writing
+/plugin install research-paper-writing@paper-writing-skills-marketplace
 ```
 
-### 方式二：作为 Claude Code skill 安装（传统方式）
+### 更新
 
 ```bash
-# 全局安装
-mkdir -p "$HOME/.claude/skills"
-cp -R skills/research-paper-writing "$HOME/.claude/skills/"
-
-# 或项目级安装
-mkdir -p .claude/skills
-cp -R skills/research-paper-writing .claude/skills/
+/plugin marketplace update paper-writing-skills-marketplace
 ```
 
-## 插件结构
+## 市场结构
 
 ```
-research-paper-writing/
+paper-writing-skills-marketplace/
 ├── .claude-plugin/
-│   └── plugin.json          # 插件清单
-├── skills/
-│   └── research-paper-writing/
-│       ├── SKILL.md         # 核心流程与规则
-│       └── references/      # 按章节拆分的写作指南
-│           ├── abstract.md
-│           ├── introduction.md
-│           ├── method.md
-│           ├── experiments.md
-│           ├── related-work.md
-│           ├── conclusion.md
-│           ├── paper-review.md
-│           ├── does-my-writing-flow-source.md
-│           └── examples/    # 来自真实论文的标注模板
+│   └── marketplace.json              # 市场注册表
+├── plugins/
+│   └── research-paper-writing/       # 插件
+│       ├── .claude-plugin/
+│       │   └── plugin.json           # 插件清单
+│       └── skills/
+│           └── research-paper-writing/
+│               ├── SKILL.md          # 核心流程与规则
+│               └── references/       # 按章节拆分的写作指南
+│                   ├── abstract.md
+│                   ├── introduction.md
+│                   ├── method.md
+│                   ├── experiments.md
+│                   ├── related-work.md
+│                   ├── conclusion.md
+│                   ├── paper-review.md
+│                   └── examples/     # 来自真实论文的标注模板
 ├── README.md
 ├── README_zh.md
 └── LICENSE
@@ -85,6 +73,15 @@ research-paper-writing/
 - "检查论文中的 claim-evidence 对齐"
 - "提交前帮我 review 一下论文"
 - "重写 Method 部分，加强 motivation"
+
+## 添加你的插件
+
+向本市场贡献插件：
+
+1. 在 `plugins/your-plugin-name/` 中创建你的插件
+2. 添加 `.claude-plugin/plugin.json` 清单
+3. 在 `.claude-plugin/marketplace.json` 中添加条目
+4. 提交 Pull Request
 
 ## 致谢
 
